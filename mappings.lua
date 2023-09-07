@@ -1,5 +1,37 @@
 local utils = require "user.utils"
 local astro_utils = require "astronvim.utils"
+
+-- При перемещении курсора влево на начале строки (с помощью 'h') переходить на конец предыдущей строки
+vim.api.nvim_set_keymap(
+  "n",
+  "h",
+  'v:count == 0 ? (col(".") == 1 ? "k$" : "h") : "h"',
+  { noremap = true, silent = true, expr = true }
+)
+
+-- При перемещении курсора вправо на конце строки (с помощью 'l') переходить на начало следующей строки
+vim.api.nvim_set_keymap(
+  "n",
+  "l",
+  'v:count == 0 ? (col(".") == col("$")-1 ? "j0" : "l") : "l"',
+  { noremap = true, silent = true, expr = true }
+)
+-- При перемещении курсора влево на начале строки (с помощью '<Left>') переходить на конец предыдущей строки
+vim.api.nvim_set_keymap(
+  "i",
+  "<Left>",
+  'v:count == 0 ? (col(".") == 1 ? "<Esc>k$a" : "<Left>") : "<Left>"',
+  { noremap = true, silent = true, expr = true }
+)
+
+-- При перемещении курсора вправо на конце строки (с помощью '<Right>') переходить на начало следующей строки
+vim.api.nvim_set_keymap(
+  "i",
+  "<Right>",
+  'v:count == 0 ? (col(".") == col("$")-1 ? "<Esc>j0i" : "<Right>") : "<Right>"',
+  { noremap = true, silent = true, expr = true }
+)
+
 local mappings = {
   n = {
     -- disable default bindings

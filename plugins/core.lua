@@ -1,7 +1,27 @@
 local get_icon = require("astronvim.utils").get_icon
 
 return {
-  { "goolord/alpha-nvim", enabled = false },
+  --{ "goolord/alpha-nvim", enabled = false },
+  {
+    "goolord/alpha-nvim",
+    opts = function(_, opts) -- override the options using lazy.nvim
+      opts.section.header.val = { -- change the header section         " Dashboard Header",
+        "##  ##             #                                       ##   ",
+        "##  ##  ##   ##  #####  ######   #####  #####    #####  ##   ## ",
+        "##  ##  ##  ### ## # ## ##   ## ##   ## ##  ##  ##   ## ##  ### ",
+        "##  ##  ## # ## ## # ## ######  ##   ## ######  ##   ## ## # ## ",
+        "##  ##  ###  ##  #####  ##      ##   ## ##   ## ##   ## ###  ## ",
+        "####### ##   ##    #    ##       #####  ######   #####  ##   ## ",
+        "      #                                                         ",
+        "",
+        "##   ##  #####   #####  ######   #####  ######   ####   ######  ##   ## #####",
+        "##  ##  ##   ## ##   ## ##   ## ##   ## ##   ##     ##    ##    ##  ### ##  ##",
+        "#####   ##   ## ##   ## ##   ## ######  ######   #####    ##    ## # ## ######",
+        "##  ##  ##   ## ##   ## ##   ## ##      ##      ##  ##    ##    ###  ## ##   ##",
+        "##   ##  #####   #####  ##   ##  #####  ##       ######   ##    ##   ## ######",
+      }
+    end,
+  },
   { "max397574/better-escape.nvim", enabled = false },
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
 
